@@ -32,6 +32,10 @@ gem 'bootstrap'
 
 gem 'devise'
 
+gem 'correios-cep'
+gem 'jquery_mask_rails', '~> 0.1.0'
+gem "cpf_cnpj"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

@@ -16,3 +16,37 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+//= require jquery.mask
+
+
+$(document).on('turbolinks:load', function(){
+	$('#cep').blur(function(e) { 
+		var cep = $('#cep').val();
+
+		if (!cep.match(/^[0-9]{5}-[0-9]{3}$/)) {
+			alert('CEP inválido');
+			return false;
+		}
+
+		$.ajax({
+			dataType: "json",
+			url: '/cep/index',
+			data: {'cep': cep},
+			success: function(data) {
+				if ($.isEmptyObject(data)) {
+					alert('CEP não encontrado');
+					$('#cep').val('');
+					$('#bairro').val('');
+					$('#cidade').val('');
+					$('#estado').val('');
+					$('#rua').val('');
+					return false;
+				}
+				$('#bairro').val(data.neighborhood);
+				$('#cidade').val(data.city);
+				$('#estado').val(data.state);
+				$('#rua').val(data.address);
+			}
+		});
+	});	
+});

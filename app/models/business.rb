@@ -1,14 +1,13 @@
-class Customer < ApplicationRecord
+class Business < ApplicationRecord
   before_validation :format_params
-  validates :name, presence: true,
-                    length: { minimum: 5 }
+  validates :name, presence: true, length: { minimum: 5 }, uniqueness: true
   validates :city, presence: true
   validates :state, presence: true
   validates :neighborhood, presence: true
   validates :address, presence: true
   validates :zipcode, presence: true
-  validates :cpf, uniqueness: true
-  validate :cpf_valid
+  validates :cnpj, uniqueness: true
+  validate :cnpj_valid
   
 
   # Include default devise modules. Others available are:
@@ -17,11 +16,11 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   private
-    def cpf_valid
-      errors.add(:cpf, 'inválido') if !CPF.valid?(cpf, strict: true)
-    end
+  	def cnpj_valid
+  		errors.add(:cnpj, 'inválido') if !CNPJ.valid?(cnpj, strict: true)
+  	end
 
-    def format_params
-      self.cpf = CPF.new(cpf).stripped
-    end
+  	def format_params
+  		self.cnpj = CPF.new(cnpj).stripped
+  	end
 end

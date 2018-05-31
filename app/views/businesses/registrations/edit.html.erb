@@ -1,0 +1,80 @@
+<div class="container">
+<h2>Atualizar perfil</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+    <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :name  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :senha %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> caracteres no minimo</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :confirme_a_senha %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :senha_atual %><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :cnpj %><br>
+    <%= f.text_field :cnpj  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cep %><br>
+    <%= f.text_field :zipcode, id: 'cep' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estado %><br>
+    <%= f.text_field :state, :readonly => true, id: 'estado' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cidade %><br>
+    <%= f.text_field :city, :readonly => true, id: 'cidade' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rua %><br>
+    <%= f.text_field :address, id: 'rua'  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bairro %><br>
+    <%= f.text_field :neighborhood, id: 'bairro' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Atualizar" %>
+  </div>
+<% end %>
+
+<!-- <h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %> -->
+</div>

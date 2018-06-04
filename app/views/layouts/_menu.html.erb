@@ -14,6 +14,7 @@
           <%= link_to 'Meus carros', cars_path, :class => 'nav-link'  %>
         </li>
       <% elsif business_signed_in? %>
+        <%= link_to 'Código promocional', vouchers_path, :class => 'nav-link'  %>
       <% else %>
         <li class="nav-item">
           <%= link_to "Cadastre-se", index_signup_path, :class => 'nav-link'  %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :vouchers
   resources :cars
   devise_for :businesses, path: 'businesses', controllers: {
   	sessions: "businesses/sessions",

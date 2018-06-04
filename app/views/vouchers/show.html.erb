@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @voucher.code %>
+</p>
+
+<p>
+  <strong>Discount:</strong>
+  <%= @voucher.discount %>
+</p>
+
+
+<%= link_to 'Edit', edit_voucher_path(@voucher) %> |
+<%= link_to 'Back', vouchers_path %>

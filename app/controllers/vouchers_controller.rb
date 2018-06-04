@@ -5,7 +5,7 @@ class VouchersController < ApplicationController
   # GET /vouchers
   # GET /vouchers.json
   def index
-    @vouchers = Voucher.all
+    @vouchers = Voucher.where(business_id: current_business.id)
   end
 
   # GET /vouchers/1

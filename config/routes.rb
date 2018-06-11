@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :services
   resources :vouchers
   resources :cars
   devise_for :businesses, path: 'businesses', controllers: {

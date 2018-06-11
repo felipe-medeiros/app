@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_04_222351) do
+ActiveRecord::Schema.define(version: 2018_06_09_015458) do
 
   create_table "businesses", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 2018_06_04_222351) do
     t.string "cpf"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.text "description"
+    t.integer "business_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_services_on_business_id"
   end
 
   create_table "vouchers", force: :cascade do |t|

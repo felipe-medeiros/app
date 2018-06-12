@@ -1,0 +1,55 @@
+<p><%= notice %></p>
+<h2><%= @business.name %></h2>
+<%= form_for(schedule) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :hour %>
+    <%= form.time_select :hour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+<!--   <div class="field">
+    <%= form.label :evaluation %>
+    <%= form.number_field :evaluation %>
+  </div> -->
+
+  <div class="field">
+        <%= hidden_field_tag 'schedule[customer_id]', current_customer.id  %>
+  </div>
+
+  <div class="field">
+    <%= hidden_field_tag 'schedule[business_id]', @business.id  %>
+  </div>
+
+  <div class="field">
+<%= form.label :cars %>
+  <select name="schedule[car_id]" required>
+  <% current_customer.cars.each do |car| %>
+      <option value="<%= car.id  %>">
+        <%= car.plate %>
+      </option>
+  <% end %>
+</select><%= link_to 'Novo carro', new_car_path %>
+</div>
+
+<div class="field">
+<%= form.label :services %>
+  <ul>
+  <% @business.service.each do |service| %>
+      <li>
+        <%= check_box_tag 'service_ids[]', service.id -%>
+        <%= h service.name -%>, R$ <%= h service.price -%>
+      </li>
+  <% end %>
+</ul>
+</div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Agendamentos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Cliente</th>
+      <th>Carro</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.hour %></td>
+        <td><%= schedule.customer.name %></td>
+        <td><%= schedule.car.plate %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -2,6 +2,7 @@ class IndexController < ApplicationController
   before_action :check_signed_in, only: [:login, :signup]
 
   def index
+    @businesses = Business.all
   end
 
   def login

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hour: 2018-06-11 14:24:05
+  date: 2018-06-11
+  evaluation: 1
+  customer: one
+  business: one
+
+two:
+  hour: 2018-06-11 14:24:05
+  date: 2018-06-11
+  evaluation: 1
+  customer: two
+  business: two

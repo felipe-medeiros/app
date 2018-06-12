@@ -1,25 +1,31 @@
 Rails.application.routes.draw do
-  resources :services
-  resources :vouchers
-  resources :cars
+  resources :services, :vouchers, :cars
+
   devise_for :businesses, path: 'businesses', controllers: {
-  	sessions: "businesses/sessions",
-  	registrations: "businesses/registrations"
+    sessions: "businesses/sessions",
+    registrations: "businesses/registrations"
   }
 
   devise_for :customers, path: 'customers', controllers: { 
-  	sessions: "customers/sessions",
-  	registrations: "customers/registrations"
+    sessions: "customers/sessions",
+    registrations: "customers/registrations"
   }
+
+  resources :businesses do
+    resources :schedules, only: [:new, :create]
+  end
 
   get 'index/index'
   get 'index/login'
   get 'index/signup'
   get 'index/about'
   get 'cep/index'
+  get 'schedules/business_show'
+  get 'schedules/customer_show'
+
 
   devise_scope :customer do
-  get 'sign_in', to: 'devise/sessions#new'
+    get 'sign_in', to: 'devise/sessions#new'
   end
 
   root to: "index#index"
